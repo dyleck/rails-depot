@@ -19,3 +19,11 @@ ruby:
           Line2
   price: 49.50
   image_url: ruby.png
+
+python:
+  title: Programming python 2.7
+  description:
+          Line1
+          Line2
+  price: 39.99
+  image_url: pythong.jpg
