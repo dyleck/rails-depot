@@ -44,7 +44,7 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to store_path
   end
 
   test "should create line_item via ajax" do
@@ -56,5 +56,14 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_select_jquery :html, '#cart' do
       assert_select 'tr#current_item td', /Programming Ruby 1.9/
     end
+  end
+
+  test "should delete line_item via ajax" do
+
+    assert_difference('LineItem.count', -1) do
+      xhr :post, :destroy, id: @line_item
+    end
+
+    assert_response :success
   end
 end
