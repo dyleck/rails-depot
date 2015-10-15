@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
+    @hide_checkout = true
   end
 
   # GET /orders/1/edit
