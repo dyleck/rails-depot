@@ -44,6 +44,15 @@
     margin-left: 17em;
     padding: 1em;
     background: white;
+
+    #product {
+      th {
+	border-bottom: 2px solid black;
+      }
+      .grayed {
+        background: lightgrey;
+      }
+    }
   }
 
   #side {

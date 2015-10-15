@@ -1,0 +1,22 @@
+<div class='product'>
+  <!--  <p><%= @product.title %></p> -->
+  <table id='product'>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>payment_type</th>
+        <th>Value</th>
+      </tr>
+      <% @product.orders.each do |order| %>
+        <tr class='<%= cycle "grayed", "" %>'>
+          <td><%= order.name %></td>
+          <td><%= order.address.gsub("\n", '<br>').html_safe %></td>
+          <td><%= order.pay_type %></td>
+          <td><%= order.line_items.to_a.sum { |item| item.total_price } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
