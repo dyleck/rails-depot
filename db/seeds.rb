@@ -43,3 +43,7 @@ Product.create!(title: 'Rails Test Prescriptions',
       </p>},
   image_url: 'rtp.jpg',
   price: 34.95)
+
+PayType.delete_all
+PayType.create!(name: 'check')
+PayType.create!(name: 'credit')
