@@ -7,8 +7,14 @@ class ApplicationController < ActionController::Base
 
   protected
     def authorize
-      unless User.find_by(id: session[:user_id]) || User.count.zero?
-        redirect_to login_url, notice: "Please log in"
+      if request.format != Mime::HTML
+        authenticate_or_request_with_http_basic do |user, pass|
+          user == "admin" && pass == "password"
+        end
+      else
+        unless User.find_by(id: session[:user_id]) || User.count.zero?
+          redirect_to login_url, notice: "Please log in"
+        end
       end
     end
 end
