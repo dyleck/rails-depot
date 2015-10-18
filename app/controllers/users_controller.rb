@@ -40,6 +40,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    if not @user.authenticate(params.require(:user)[:old_password])
+      redirect_to edit_user_path, notice: "Old password does not match"
+      return
+    end
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
