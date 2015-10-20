@@ -1,5 +1,10 @@
 <h1>Listing products</h1>
 
+<% if notice %>
+    <div id="notice">
+      <p><%= notice %></p>
+    </div>
+<% end %>
 <table>
 <% @products.each do |product| %>
   <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
@@ -11,6 +16,7 @@
         <dt><%= product.title %></dt>
         <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
       </dl>
+      <p><%= product.locale %></p>
     </td>
     <td class="list_actions">
       <%= link_to 'Show', product %><br/>
